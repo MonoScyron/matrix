@@ -1,0 +1,12 @@
+{
+    "year": "2069",
+    "serverAddress": "mat.dragonsden.run",
+    "serverName": "Dragon's Den",
+    "iconName": "shadowrun-logo.png",
+    "terminalID": "dragonsden",
+    "defaultUser": {
+        "userId": "user",
+        "password": "",
+        "userName": "anon"
+    }
+}

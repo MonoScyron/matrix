@@ -1,0 +1,17 @@
+[
+    {
+        "userId": "testId",
+        "password": "testPassword",
+        "userName": "Smith, John"
+    },
+    {
+        "userId": "Shimmer",
+        "password": "Password!",
+        "userName": "Shimmer"
+    },
+    {
+        "userId": "YoungDevil44",
+        "password": "Sister0604",
+        "userName": "Ortho"
+    }
+]
