@@ -1,8 +1,8 @@
 [
     {
-        "userId": "testId",
-        "password": "testPassword",
-        "userName": "Smith, John"
+        "userId": "test",
+        "password": "test",
+        "userName": "testing"
     },
     {
         "userId": "Shimmer",
@@ -13,5 +13,10 @@
         "userId": "YoungDevil44",
         "password": "Sister0604",
         "userName": "Ortho"
+    },
+    {
+        "userId": "12",
+        "password": "1234",
+        "userName": "12"
     }
 ]

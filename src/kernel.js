@@ -26,6 +26,12 @@ function setHeader( msg = "⠀" ) {
     if ( serverDatabase.year ) {
         date.setYear( serverDatabase.year );
     }
+    if ( serverDatabase.month ) {
+        date.setMonth( Number( serverDatabase.month ) - 1 );
+    }
+    if ( serverDatabase.date ) {
+        date.setDate( serverDatabase.date );
+    }
     const promptText = `[${ userDatabase.userName }@${ serverDatabase.terminalID }] # `;
 
     const dateStr = `${ date.getDate() }/${ ( 1 + date.getMonth() ).toString().padStart( 2, "0" ) }/${ 1900 + date.getYear() }`;
@@ -286,6 +292,12 @@ system = {
             if ( serverDatabase.year ) {
                 date.setYear( serverDatabase.year );
             }
+            if ( serverDatabase.month ) {
+                date.setMonth( Number( serverDatabase.month ) - 1 );
+            }
+            if ( serverDatabase.date ) {
+                date.setDate( serverDatabase.date );
+            }
             resolve( String( date ) );
         } );
     },
@@ -351,7 +363,7 @@ system = {
             } else if ( args[ 0 ] in system && args[ 0 ] !== "dumpdb" ) {
                 console.error( `Missing help message for system command: ${ args[ 0 ] }` );
             } else {
-                resolve( [ `Unknow command ${ args[ 0 ] }` ] );
+                resolve( [ `Unknown command ${ args[ 0 ] }` ] );
             }
         } );
     },
@@ -459,12 +471,6 @@ system = {
                 resolve( `Server ${ serverInfo.serverAddress } (${ serverInfo.serverName }) can be reached` );
             } )
                 .fail( () => reject( new AddressNotFoundError( args ) ) );
-        } );
-    },
-
-    telnet() {
-        return new Promise( ( _, reject ) => {
-            reject( new Error( "telnet is unsecure and is deprecated - use ssh instead" ) );
         } );
     },
 
@@ -597,56 +603,4 @@ function allowedSoftwares() {
         }
     }
     return softwares;
-}
-
-/*
- * Wrapper to easily define sofwtare programs that act as dweets.
- * Reference code: https://github.com/lionleaf/dwitter/blob/master/dwitter/templates/dweet/dweet.html#L250
- * Notable difference with https://dwitter.net : default canvas dimensions are width=200 & height=200
- * There are usage examples in config/software.js
- */
-const FPS = 60;
-const epsilon = 1.5;
-/* eslint-disable no-unused-vars */
-const C = Math.cos;
-const S = Math.sin;
-const T = Math.tan;
-
-function dweet( u, width, height ) {
-    width = width || 200;
-    height = height || 200;
-    const id = Date.now().toString( 36 );
-    let frame = 0;
-    let nextFrameMs = 0;
-    function loop( frameTime ) {
-        frameTime = frameTime || 0;
-        const c = document.getElementById( id );
-        if ( !c ) {
-            return;
-        }
-        requestAnimationFrame( loop );
-        if ( frameTime < nextFrameMs - epsilon ) {
-            return; // Skip this cycle as we are animating too quickly.
-        }
-        nextFrameMs = Math.max( nextFrameMs + 1000 / FPS, frameTime );
-        let time = frame / FPS;
-        if ( time * FPS | frame - 1 === 0 ) {
-            time += 0.000001;
-        }
-        frame++;
-        const x = c.getContext( "2d" );
-        x.fillStyle = "white";
-        x.strokeStyle = "white";
-        x.beginPath();
-        x.resetTransform();
-        x.clearRect( 0, 0, width, height ); // clear canvas
-        u( time, x, c );
-    }
-    setTimeout( loop, 50 ); // Small delay to let time for the canvas to be inserted
-    return `<canvas id="${ id }" width="${ width }" height="${ height }">`;
-}
-
-function R( r, g, b, a ) {
-    a = typeof a === "undefined" ? 1 : a;
-    return `rgba(${ r | 0 },${ g | 0 },${ b | 0 },${ a })`;
 }

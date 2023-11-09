@@ -1,9 +1,11 @@
 {
     "year": "2069",
-    "serverAddress": "mat.dragonsden.run",
+    "month": "2",
+    "date": "25",
+    "serverAddress": "dragonsden",
     "serverName": "Dragon's Den",
     "iconName": "shadowrun-logo.png",
-    "terminalID": "dragonsden",
+    "terminalID": "dragonsden.run",
     "defaultUser": {
         "userId": "user",
         "password": "",
