@@ -1,8 +1,8 @@
 [
     {
-        "userId": "test",
-        "password": "test",
-        "userName": "testing"
+        "userId": "admin",
+        "password": "insertbadjoke",
+        "userName": "admin"
     },
     {
         "userId": "Shimmer",
@@ -18,5 +18,10 @@
         "userId": "12",
         "password": "1234",
         "userName": "12"
+    },
+    {
+        "userId": "GreenShell",
+        "password": "CucumberSupr3macy",
+        "userName": "Nitori"
     }
 ]
