@@ -39,7 +39,7 @@ function setHeader( msg = "⠀" ) {
     <img align="left" src="config/network/${ serverDatabase.serverAddress }/${ serverDatabase.iconName }" width="100" height="100" style="padding: 0px 10px 20px 0px">
     <h2 style="letter-spacing: 4px">${ serverDatabase.serverName }</h2>
     <p>Logged in: ${ serverDatabase.serverAddress } ( ${ dateStr } ) </p>
-    <p>Enter "help" for more information.</p>
+    <p>Enter "help" for more information, or "source" for information categories.</p>
     `;
     // Clear content:
     output_.innerHTML = "";
@@ -169,6 +169,10 @@ function kernel( app, args ) {
     return software( app, args );
 }
 
+let contactlist = [];
+let kilofactionslist = [];
+let kilootherslist = [];
+
 /**
  * Attempts to connect to a server.
  * If successful, sets global variables serverDatabase / userDatabase / userList / mailList
@@ -188,6 +192,15 @@ kernel.connectToServer = function connectToServer( serverAddress, userName, pass
                 } );
                 $.get( `config/network/${ serverInfo.serverAddress }/mailserver.json`, ( mails ) => {
                     mailList = mails;
+                } );
+                $.get( `config/network/${ serverInfo.serverAddress }/contacts.json`, ( contacts ) => {
+                    contactlist = contacts;
+                } );
+                $.get( `config/network/${ serverInfo.serverAddress }/kilofactions.json`, ( kilo ) => {
+                    kilofactionslist = kilo;
+                } );
+                $.get( `config/network/${ serverInfo.serverAddress }/kiloothers.json`, ( kilo ) => {
+                    kilootherslist = kilo;
                 } );
                 setHeader( "Connection successful" );
                 resolve();
@@ -342,7 +355,7 @@ system = {
                     "If the ping doesn't return a valid response, the address may be incorrect, may not exist or can't be reached locally."
                 ] );
             } else if ( args[ 0 ] === "read" ) {
-                resolve( [ "Usage:", "> read x", "If you're logged in you can read your mail messages if any." ] );
+                resolve( [ "Usage:", "> read source x", "If you're logged in you can read your mail messages if any." ] );
             } else if ( args[ 0 ] === "ssh" ) {
                 resolve( [
                     "Usage:",
@@ -434,22 +447,73 @@ system = {
 
     read( args ) {
         return new Promise( ( resolve, reject ) => {
+            let source = args[0]
+            let target = Number(args[1])
+
             const message = [];
 
             let readOption = false;
-            $.each( mailList, ( index, mail ) => {
-                if ( mail.to.includes( userDatabase.userId ) && Number( args[ 0 ] ) === index ) {
-                    readOption = true;
-                    message.push( "---------------------------------------------" );
-                    message.push( `From: ${ mail.from }` );
-                    message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                    message.push( "---------------------------------------------" );
 
-                    $.each( mail.body.split( "  " ), ( _, line ) => {
-                        message.push( line );
-                    } );
-                }
-            } );
+            if (source === "mail") {
+                $.each( mailList, ( index, mail ) => {
+                    if ( mail.to.includes( userDatabase.userId ) && target === index ) {
+                        readOption = true;
+                        message.push( "---------------------------------------------" );
+                        message.push( `From: ${ mail.from }` );
+                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
+                        message.push( "---------------------------------------------" );
+
+                        $.each( mail.body.split( "  " ), ( _, line ) => {
+                            message.push( line );
+                        } );
+                    }
+                } );
+            }
+            else if (source === "contacts") {
+                $.each( contactlist, ( index, contact ) => {
+                    if ( contact.access.includes( userDatabase.userId ) && target === index ) {
+                        readOption = true;
+                        message.push( "---------------------------------------------" );
+                        message.push( `${ contact.title }` );
+                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
+                        message.push( "---------------------------------------------" );
+
+                        $.each( contact.body.split( "  " ), ( _, line ) => {
+                            message.push( line );
+                        } );
+                    }
+                } );
+            }
+            else if (source === "other") {
+                $.each( kilootherslist, ( index, other ) => {
+                    if ( target === index ) {
+                        readOption = true;
+                        message.push( "---------------------------------------------" );
+                        message.push( `${ other.title }` );
+                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
+                        message.push( "---------------------------------------------" );
+
+                        $.each( other.body.split( "  " ), ( _, line ) => {
+                            message.push( line );
+                        } );
+                    }
+                } );
+            }
+            else if (source === "factions") {
+                $.each( kilofactionslist, ( index, faction ) => {
+                    if ( target === index ) {
+                        readOption = true;
+                        message.push( "---------------------------------------------" );
+                        message.push( `${ faction.title }` );
+                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
+                        message.push( "---------------------------------------------" );
+
+                        $.each( faction.body.split( "  " ), ( _, line ) => {
+                            message.push( line );
+                        } );
+                    }
+                } );
+            }
 
             if ( !readOption ) {
                 reject( new InvalidMessageKeyError() );

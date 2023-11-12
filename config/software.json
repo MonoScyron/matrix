@@ -1,2 +1,20 @@
 {
+  "source": {
+    "help": "List the sources you can read from.",
+    "message": [
+      "mail",
+      "contacts",
+      "factions",
+      "other"
+    ]
+  },
+  "contacts": {
+    "help": "If you're logged in you can list your contacts if any."
+  },
+  "factions": {
+    "help": "List your info on factions."
+  },
+  "other": {
+    "help": "List your info on other important stuff."
+  }
 }
