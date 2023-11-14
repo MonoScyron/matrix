@@ -355,7 +355,7 @@ system = {
                     "If the ping doesn't return a valid response, the address may be incorrect, may not exist or can't be reached locally."
                 ] );
             } else if ( args[ 0 ] === "read" ) {
-                resolve( [ "Usage:", "> read source x", "If you're logged in you can read your mail messages if any." ] );
+                resolve( [ "Usage:", "> read source x", "Read your sources. Some may require you to be logged in." ] );
             } else if ( args[ 0 ] === "ssh" ) {
                 resolve( [
                     "Usage:",
