@@ -420,12 +420,6 @@ system = {
         } );
     },
 
-    exit() {
-        return new Promise( () => {
-            location.reload();
-        } );
-    },
-
     mail() {
         return new Promise( ( resolve, reject ) => {
             const messageList = [];
