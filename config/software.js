@@ -51,7 +51,7 @@ function other() {
     return new Promise((resolve, reject) => {
         const messageList = [];
 
-        $.each(kilootherslist, (index, other) => {
+        $.each(otherslist, (index, other) => {
             messageList.push(`[${index}] ${other.title}`);
         });
 
@@ -68,8 +68,25 @@ function factions(args) {
     return new Promise((resolve, reject) => {
         const messageList = [];
 
-        $.each(kilofactionslist, (index, faction) => {
+        $.each(factionslist, (index, faction) => {
             messageList.push(`[${index}] ${faction.title}`);
+        });
+
+        if(messageList === "") {
+            reject(new MailServerIsEmptyError());
+            return;
+        }
+
+        resolve(messageList);
+    });
+}
+
+function places(args) {
+    return new Promise((resolve, reject) => {
+        const messageList = [];
+
+        $.each(placelist, (index, place) => {
+            messageList.push(`[${index}] ${place.title}`);
         });
 
         if(messageList === "") {

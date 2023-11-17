@@ -170,8 +170,9 @@ function kernel( app, args ) {
 }
 
 let contactlist = [];
-let kilofactionslist = [];
-let kilootherslist = [];
+let factionslist = [];
+let otherslist = [];
+let placelist = [];
 
 /**
  * Attempts to connect to a server.
@@ -196,11 +197,14 @@ kernel.connectToServer = function connectToServer( serverAddress, userName, pass
                 $.get( `config/network/${ serverInfo.serverAddress }/contacts.json`, ( contacts ) => {
                     contactlist = contacts;
                 } );
-                $.get( `config/network/${ serverInfo.serverAddress }/kilofactions.json`, ( kilo ) => {
-                    kilofactionslist = kilo;
+                $.get( `config/network/${ serverInfo.serverAddress }/factions.json`, ( factions ) => {
+                    factionslist = factions;
                 } );
-                $.get( `config/network/${ serverInfo.serverAddress }/kiloothers.json`, ( kilo ) => {
-                    kilootherslist = kilo;
+                $.get( `config/network/${ serverInfo.serverAddress }/others.json`, ( others ) => {
+                    otherslist = others;
+                } );
+                $.get( `config/network/${ serverInfo.serverAddress }/places.json`, ( places ) => {
+                    placelist = places;
                 } );
                 setHeader( "Connection successful" );
                 resolve();
@@ -479,7 +483,7 @@ system = {
                 } );
             }
             else if (source === "other") {
-                $.each( kilootherslist, ( index, other ) => {
+                $.each( otherslist, (index, other ) => {
                     if ( target === index ) {
                         readOption = true;
                         message.push( "---------------------------------------------" );
@@ -494,7 +498,7 @@ system = {
                 } );
             }
             else if (source === "factions") {
-                $.each( kilofactionslist, ( index, faction ) => {
+                $.each( factionslist, ( index, faction ) => {
                     if ( target === index ) {
                         readOption = true;
                         message.push( "---------------------------------------------" );
@@ -503,6 +507,21 @@ system = {
                         message.push( "---------------------------------------------" );
 
                         $.each( faction.body.split( "  " ), ( _, line ) => {
+                            message.push( line );
+                        } );
+                    }
+                } );
+            }
+            else if (source === "places") {
+                $.each( placelist, ( index, place ) => {
+                    if ( target === index ) {
+                        readOption = true;
+                        message.push( "---------------------------------------------" );
+                        message.push( `${ place.title }` );
+                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
+                        message.push( "---------------------------------------------" );
+
+                        $.each( place.body.split( "  " ), ( _, line ) => {
                             message.push( line );
                         } );
                     }

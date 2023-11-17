@@ -5,6 +5,7 @@
       "mail",
       "contacts",
       "factions",
+      "places",
       "other"
     ]
   },
@@ -16,5 +17,8 @@
   },
   "other": {
     "help": "List your info on other important stuff."
+  },
+  "places": {
+    "help": "List your info on places."
   }
 }
