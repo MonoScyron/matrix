@@ -50,9 +50,9 @@ class InvalidPasswordError extends Error {
 }
 
 class ServerIsEmptyError extends Error {
-    constructor(list) {
+    constructor( list ) {
         super();
-        this.message = list + " is empty.";
+        this.message = `${ list } is empty.`;
     }
 }
 

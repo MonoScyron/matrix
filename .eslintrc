@@ -44,7 +44,7 @@
         "InvalidMessageKeyError": false,
         "InvalidPasswordError": false,
         "JsonFetchParseError": false,
-        "MailServerIsEmptyError": false,
+        "ServerIsEmptyError": false,
         "ServerRequireUsernameError": false,
         "UnknownUserError": false,
         "UsernameIsEmptyError": false
