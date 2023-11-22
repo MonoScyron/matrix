@@ -12,34 +12,17 @@
 function contacts() {
     return new Promise((resolve, reject) => {
         const messageList = [];
-
-        $.each(contactlist, (index, contact) => {
-            if(contact.access.includes(userDatabase.userId)) {
-                messageList.push(`[${index}] ${contact.title}`);
-            }
-        });
-
-        if(messageList === "") {
-            reject(new MailServerIsEmptyError());
-            return;
+        if(contactdict[userDatabase.userId] !== undefined) {
+            $.each(contactdict[userDatabase.userId], (index, contact) => {
+                if(contact.access.includes(userDatabase.userId)) {
+                    messageList.push(`[${index}] ${contact.title}`);
+                }
+            });
         }
 
-        resolve(messageList);
-    });
-}
 
-function contacts() {
-    return new Promise((resolve, reject) => {
-        const messageList = [];
-
-        $.each(contactlist, (index, contact) => {
-            if(contact.access.includes(userDatabase.userId)) {
-                messageList.push(`[${index}] ${contact.title}`);
-            }
-        });
-
-        if(messageList === "") {
-            reject(new MailServerIsEmptyError());
+        if(messageList.length === 0) {
+            reject(new ServerIsEmptyError("Contacts"));
             return;
         }
 
@@ -55,8 +38,8 @@ function other() {
             messageList.push(`[${index}] ${other.title}`);
         });
 
-        if(messageList === "") {
-            reject(new MailServerIsEmptyError());
+        if(messageList.length === 0) {
+            reject(new ServerIsEmptyError("Other list"));
             return;
         }
 
@@ -72,8 +55,8 @@ function factions(args) {
             messageList.push(`[${index}] ${faction.title}`);
         });
 
-        if(messageList === "") {
-            reject(new MailServerIsEmptyError());
+        if(messageList.length === 0) {
+            reject(new ServerIsEmptyError("Factions list"));
             return;
         }
 
@@ -89,8 +72,8 @@ function places(args) {
             messageList.push(`[${index}] ${place.title}`);
         });
 
-        if(messageList === "") {
-            reject(new MailServerIsEmptyError());
+        if(messageList.length === 0) {
+            reject(new ServerIsEmptyError("Places list"));
             return;
         }
 

@@ -49,10 +49,10 @@ class InvalidPasswordError extends Error {
     }
 }
 
-class MailServerIsEmptyError extends Error {
-    constructor() {
+class ServerIsEmptyError extends Error {
+    constructor(list) {
         super();
-        this.message = "There is no new mail registered.";
+        this.message = list + " is empty.";
     }
 }
 

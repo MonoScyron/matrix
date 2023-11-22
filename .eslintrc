@@ -16,7 +16,7 @@
         "kernel": false,
         "localStorage": false,
         "logged": true,
-        "mailList": true,
+        "maildict": true,
         "output_": false,
         "output": false,
         "p5": false,
