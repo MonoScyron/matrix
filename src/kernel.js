@@ -6,10 +6,10 @@ const maildict = {};
 let cmdLine_;
 let output_;
 
-function debugObject( obj ) {
-    for ( const property in obj ) {
-        console.log( `${ property }: ${ JSON.stringify( obj[ property ] ) }` );
-        output( `${ property }: ${ JSON.stringify( obj[ property ] ) }` );
+function debugObject(obj) {
+    for(const property in obj) {
+        console.log(`${property}: ${JSON.stringify(obj[property])}`);
+        output(`${property}: ${JSON.stringify(obj[property])}`);
     }
 }
 
@@ -20,35 +20,35 @@ function debugObject( obj ) {
  *
  * @param {String} msg A message to be showed when done
  */
-function setHeader( msg = "⠀" ) {
+function setHeader(msg = "⠀") {
     // Setting correct header icon and terminal name
     const date = new Date();
-    if ( serverDatabase.year ) {
-        date.setYear( serverDatabase.year );
+    if(serverDatabase.year) {
+        date.setYear(serverDatabase.year);
     }
-    if ( serverDatabase.month ) {
-        date.setMonth( Number( serverDatabase.month ) - 1 );
+    if(serverDatabase.month) {
+        date.setMonth(Number(serverDatabase.month) - 1);
     }
-    if ( serverDatabase.date ) {
-        date.setDate( serverDatabase.date );
+    if(serverDatabase.date) {
+        date.setDate(serverDatabase.date);
     }
-    const promptText = `[${ userDatabase.userName }@${ serverDatabase.terminalID }] # `;
+    const promptText = `[${userDatabase.userName}@${serverDatabase.terminalID}] # `;
 
-    const dateStr = `${ date.getDate() }/${ ( 1 + date.getMonth() ).toString().padStart( 2, "0" ) }/${ 1900 + date.getYear() }`;
+    const dateStr = `${date.getDate()}/${(1 + date.getMonth()).toString().padStart(2, "0")}/${1900 + date.getYear()}`;
     const header = `
-    <img align="left" src="config/network/${ serverDatabase.serverAddress }/${ serverDatabase.iconName }" width="100" height="100" style="padding: 0px 10px 20px 0px">
-    <h2 style="letter-spacing: 4px">${ serverDatabase.serverName }</h2>
-    <p>Logged in: ${ serverDatabase.serverAddress } ( ${ dateStr } ) </p>
+    <img align="left" src="config/network/${serverDatabase.serverAddress}/${serverDatabase.iconName}" width="100" height="100" style="padding: 0px 10px 20px 0px">
+    <h2 style="letter-spacing: 4px">${serverDatabase.serverName}</h2>
+    <p>Logged in: ${serverDatabase.serverAddress} ( ${dateStr} ) </p>
     <p>Enter "help" for more information, or "source" for information categories.</p>
     `;
     // Clear content:
     output_.innerHTML = "";
     cmdLine_.value = "";
-    if ( term ) {
-        term.loadHistoryFromLocalStorage( serverDatabase.initialHistory );
+    if(term) {
+        term.loadHistoryFromLocalStorage(serverDatabase.initialHistory);
     }
-    output( [ header, msg ] );
-    $( ".prompt" ).html( promptText );
+    output([header, msg]);
+    $(".prompt").html(promptText);
 }
 
 /**
@@ -59,9 +59,9 @@ function setHeader( msg = "⠀" ) {
 function getDocHeight_() {
     const doc = document;
     return Math.max(
-        Math.max( doc.body.scrollHeight, doc.documentElement.scrollHeight ),
-        Math.max( doc.body.offsetHeight, doc.documentElement.offsetHeight ),
-        Math.max( doc.body.clientHeight, doc.documentElement.clientHeight )
+        Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight),
+        Math.max(doc.body.offsetHeight, doc.documentElement.offsetHeight),
+        Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
     );
 }
 
@@ -69,7 +69,7 @@ function getDocHeight_() {
  * Scroll to bottom and clear the input value for a new line.
  */
 function newLine() {
-    window.scrollTo( 0, getDocHeight_() );
+    window.scrollTo(0, getDocHeight_());
     cmdLine_.value = ""; // Clear/setup line for next input.
 }
 
@@ -79,28 +79,29 @@ function newLine() {
  * @param {String} data The string to be returned as a print in terminal
  * @param {Array} data The array to be returned as a print in terminal
  */
-function output( data ) {
-    return new Promise( ( resolve ) => {
+function output(data) {
+    return new Promise((resolve) => {
         let delayed = 0;
 
-        if ( data && data.constructor === Object ) {
+        if(data && data.constructor === Object) {
             delayed = data.delayed;
             data = data.text;
         }
 
-        if ( data && data.constructor === Array ) {
-            if ( delayed && data.length > 0 ) {
-                outputLinesWithDelay( data, delayed, () => resolve( newLine() ) );
+        if(data && data.constructor === Array) {
+            if(delayed && data.length > 0) {
+                outputLinesWithDelay(data, delayed, () => resolve(newLine()));
                 return;
             }
-            $.each( data, ( _, value ) => {
-                printLine( value );
-            } );
-        } else if ( data ) {
-            printLine( data );
+            $.each(data, (_, value) => {
+                printLine(value);
+            });
         }
-        resolve( newLine() );
-    } );
+        else if(data) {
+            printLine(data);
+        }
+        resolve(newLine());
+    });
 }
 
 /**
@@ -109,12 +110,13 @@ function output( data ) {
  * @param {Array} lines list of content to display
  * @param {Number} delayed delay in milliseconds between which to display lines
  */
-function outputLinesWithDelay( lines, delayed, resolve ) {
+function outputLinesWithDelay(lines, delayed, resolve) {
     const line = lines.shift();
-    printLine( line );
-    if ( lines.length > 0 ) {
-        setTimeout( outputLinesWithDelay, delayed, lines, resolve, delayed );
-    } else if ( resolve ) {
+    printLine(line);
+    if(lines.length > 0) {
+        setTimeout(outputLinesWithDelay, delayed, lines, resolve, delayed);
+    }
+    else if(resolve) {
         resolve();
     }
 }
@@ -125,25 +127,25 @@ function outputLinesWithDelay( lines, delayed, resolve ) {
  * @param {String} data text to display
  * @param {Object} data information on what to display
  */
-function printLine( data ) {
-    if ( !data.startsWith( "<" ) ) {
-        data = `<p>${ data }</p>`;
+function printLine(data) {
+    if(!data.startsWith("<")) {
+        data = `<p>${data}</p>`;
     }
-    output_.insertAdjacentHTML( "beforeEnd", data );
+    output_.insertAdjacentHTML("beforeEnd", data);
     const elemInserted = output_.lastChild;
-    if ( elemInserted.classList ) { // can be undefined if elemInserted is just Text, not an HTMLElement
-        if ( elemInserted.classList.contains( "glitch" ) ) {
-            glitchImage( elemInserted );
+    if(elemInserted.classList) { // can be undefined if elemInserted is just Text, not an HTMLElement
+        if(elemInserted.classList.contains("glitch")) {
+            glitchImage(elemInserted);
         }
-        if ( elemInserted.classList.contains( "particle" ) ) {
-            particleImage( elemInserted );
+        if(elemInserted.classList.contains("particle")) {
+            particleImage(elemInserted);
         }
-        if ( elemInserted.classList.contains( "hack-reveal" ) ) {
-            hackRevealText( elemInserted, elemInserted.dataset );
+        if(elemInserted.classList.contains("hack-reveal")) {
+            hackRevealText(elemInserted, elemInserted.dataset);
         }
     }
     const text = elemInserted.textContent.trim();
-    if ( elemInserted.dataset && text ) { // can be undefined if elemInserted is just Text, not an HTMLElement
+    if(elemInserted.dataset && text) { // can be undefined if elemInserted is just Text, not an HTMLElement
         elemInserted.dataset.text = text; // needed for "desync" effect
     }
 }
@@ -161,12 +163,12 @@ function printLine( data ) {
  * @param {String} app The app name
  * @param {Array} args A list of Strings as args
  */
-function kernel( app, args ) {
-    const systemApp = system[ app ] || system[ app.replace( ".", "_" ) ];
-    if ( systemApp ) {
-        return systemApp( args );
+function kernel(app, args) {
+    const systemApp = system[app] || system[app.replace(".", "_")];
+    if(systemApp) {
+        return systemApp(args);
     }
-    return software( app, args );
+    return software(app, args);
 }
 
 const contactdict = {};
@@ -178,83 +180,91 @@ let placelist = [];
  * Attempts to connect to a server.
  * If successful, sets global variables serverDatabase / userDatabase / userList / maildict
  */
-kernel.connectToServer = function connectToServer( serverAddress, userName, passwd ) {
-    return new Promise( ( resolve, reject ) => {
-        if ( serverAddress === serverDatabase.serverAddress ) {
-            reject( new AlreadyOnServerError( serverAddress ) );
+kernel.connectToServer = function connectToServer(serverAddress, userName, passwd) {
+    return new Promise((resolve, reject) => {
+        if(serverAddress === serverDatabase.serverAddress) {
+            reject(new AlreadyOnServerError(serverAddress));
             return;
         }
-        $.get( `config/network/${ serverAddress }/manifest.json`, ( serverInfo ) => {
-            if ( !userName && serverInfo.defaultUser ) {
+        $.get(`config/network/${serverAddress}/manifest.json`, (serverInfo) => {
+            if(!userName && serverInfo.defaultUser) {
                 serverDatabase = serverInfo;
                 userDatabase = serverInfo.defaultUser;
-                $.get( `config/network/${ serverInfo.serverAddress }/userlist.json`, ( users ) => {
+                $.get(`config/network/${serverInfo.serverAddress}/userlist.json`, (users) => {
                     userList = users;
-                } );
-                $.get( `config/network/${ serverInfo.serverAddress }/mailserver.json`, ( mails ) => {
-                    mails.forEach( ( m ) => {
-                        if ( m.to in maildict ) {
-                            maildict[ m.to ].push( m );
-                        } else {
-                            maildict[ m.to ] = [ m ];
+                });
+                $.get(`config/network/${serverInfo.serverAddress}/mailserver.json`, (mails) => {
+                    mails.forEach((m) => {
+                        m.to.forEach((n) => {
+                            if(n in maildict) {
+                                maildict[n].push(m);
+                            }
+                            else {
+                                maildict[n] = [m];
+                            }
+                        });
+                    });
+                    console.log(maildict);
+                });
+                $.get(`config/network/${serverInfo.serverAddress}/contacts.json`, (contacts) => {
+                    contacts.forEach((c) => {
+                        if(c.access in contactdict) {
+                            contactdict[c.access].push(c);
                         }
-                    } );
-                } );
-                $.get( `config/network/${ serverInfo.serverAddress }/contacts.json`, ( contacts ) => {
-                    contacts.forEach( ( c ) => {
-                        if ( c.access in contactdict ) {
-                            contactdict[ c.access ].push( c );
-                        } else {
-                            contactdict[ c.access ] = [ c ];
+                        else {
+                            contactdict[c.access] = [c];
                         }
-                    } );
-                } );
-                $.get( `config/network/${ serverInfo.serverAddress }/factions.json`, ( factions ) => {
+                    });
+                });
+                $.get(`config/network/${serverInfo.serverAddress}/factions.json`, (factions) => {
                     factionslist = factions;
-                } );
-                $.get( `config/network/${ serverInfo.serverAddress }/others.json`, ( others ) => {
+                });
+                $.get(`config/network/${serverInfo.serverAddress}/others.json`, (others) => {
                     otherslist = others;
-                } );
-                $.get( `config/network/${ serverInfo.serverAddress }/places.json`, ( places ) => {
+                });
+                $.get(`config/network/${serverInfo.serverAddress}/places.json`, (places) => {
                     placelist = places;
-                } );
-                setHeader( "Connection successful" );
+                });
+                setHeader("Connection successful");
                 resolve();
-            } else if ( userName ) {
-                $.get( `config/network/${ serverInfo.serverAddress }/userlist.json`, ( users ) => {
-                    const matchingUser = users.find( ( user ) => user.userId === userName );
-                    if ( !matchingUser ) {
-                        reject( new UnknownUserError( userName ) );
+            }
+            else if(userName) {
+                $.get(`config/network/${serverInfo.serverAddress}/userlist.json`, (users) => {
+                    const matchingUser = users.find((user) => user.userId === userName);
+                    if(!matchingUser) {
+                        reject(new UnknownUserError(userName));
                         return;
                     }
-                    if ( matchingUser.password && matchingUser.password !== passwd ) {
-                        reject( new InvalidPasswordError( userName ) );
+                    if(matchingUser.password && matchingUser.password !== passwd) {
+                        reject(new InvalidPasswordError(userName));
                         return;
                     }
                     serverDatabase = serverInfo;
                     userDatabase = matchingUser;
                     userList = users;
-                    $.get( `config/network/${ serverInfo.serverAddress }/mailserver.json`, ( mails ) => {
-                        mails.forEach( ( m ) => {
-                            if ( m.to in maildict ) {
-                                maildict[ m.to ].push( m );
-                            } else {
-                                maildict[ m.to ] = [ m ];
+                    $.get(`config/network/${serverInfo.serverAddress}/mailserver.json`, (mails) => {
+                        mails.forEach((m) => {
+                            if(m.to in maildict) {
+                                maildict[m.to].push(m);
                             }
-                        } );
-                    } );
-                    setHeader( "Connection successful" );
+                            else {
+                                maildict[m.to] = [m];
+                            }
+                        });
+                    });
+                    setHeader("Connection successful");
                     resolve();
-                } ).fail( () => {
-                    reject( new AddressNotFoundError( serverAddress ) );
-                } );
-            } else {
-                reject( new ServerRequireUsernameError( serverAddress ) );
+                }).fail(() => {
+                    reject(new AddressNotFoundError(serverAddress));
+                });
             }
-        } ).fail( () => {
-            reject( new AddressNotFoundError( serverAddress ) );
-        } );
-    } );
+            else {
+                reject(new ServerRequireUsernameError(serverAddress));
+            }
+        }).fail(() => {
+            reject(new AddressNotFoundError(serverAddress));
+        });
+    });
 };
 
 /**
@@ -265,25 +275,25 @@ kernel.connectToServer = function connectToServer( serverAddress, userName, pass
  * @param {Object} cmdLineContainer The Input.cmdline right of the div.prompt
  * @param {Object} outputContainer The output element inside the div#container
  */
-kernel.init = function init( cmdLineContainer, outputContainer ) {
-    return new Promise( ( resolve, reject ) => {
-        cmdLine_ = document.querySelector( cmdLineContainer );
-        output_ = document.querySelector( outputContainer );
+kernel.init = function init(cmdLineContainer, outputContainer) {
+    return new Promise((resolve, reject) => {
+        cmdLine_ = document.querySelector(cmdLineContainer);
+        output_ = document.querySelector(outputContainer);
 
         $.when(
-            $.get( "config/software.json", ( softwareData ) => {
+            $.get("config/software.json", (softwareData) => {
                 softwareInfo = softwareData;
-            } ),
-            kernel.connectToServer( "localhost" )
+            }),
+            kernel.connectToServer("localhost")
         )
-            .done( () => {
-                resolve( true );
-            } )
-            .fail( ( err, msg, details ) => {
-                console.error( err, msg, details );
-                reject( new JsonFetchParseError( msg ) );
-            } );
-    } );
+        .done(() => {
+            resolve(true);
+        })
+        .fail((err, msg, details) => {
+            console.error(err, msg, details);
+            reject(new JsonFetchParseError(msg));
+        });
+    });
 };
 
 /**
@@ -294,92 +304,101 @@ kernel.init = function init( cmdLineContainer, outputContainer ) {
  */
 system = {
     dumpdb() {
-        return new Promise( () => {
-            output( ":: serverDatabase - connected server information" );
-            debugObject( serverDatabase );
-            output( "----------" );
-            output( ":: userDatabase - connected user information" );
-            debugObject( userDatabase );
-            output( "----------" );
-            output( ":: userList - list of users registered in the connected server" );
-            debugObject( userList );
-        } );
+        return new Promise(() => {
+            output(":: serverDatabase - connected server information");
+            debugObject(serverDatabase);
+            output("----------");
+            output(":: userDatabase - connected user information");
+            debugObject(userDatabase);
+            output("----------");
+            output(":: userList - list of users registered in the connected server");
+            debugObject(userList);
+        });
     },
 
     whoami() {
-        return new Promise( ( resolve ) => {
+        return new Promise((resolve) => {
             resolve(
-                `${ serverDatabase.serverAddress }/${ userDatabase.userId }`
+                `${serverDatabase.serverAddress}/${userDatabase.userId}`
             );
-        } );
+        });
     },
 
     clear() {
-        return new Promise( ( resolve ) => {
+        return new Promise((resolve) => {
             setHeader();
-            resolve( false );
-        } );
+            resolve(false);
+        });
     },
 
     date() {
-        return new Promise( ( resolve ) => {
+        return new Promise((resolve) => {
             const date = new Date();
-            if ( serverDatabase.year ) {
-                date.setYear( serverDatabase.year );
+            if(serverDatabase.year) {
+                date.setYear(serverDatabase.year);
             }
-            if ( serverDatabase.month ) {
-                date.setMonth( Number( serverDatabase.month ) - 1 );
+            if(serverDatabase.month) {
+                date.setMonth(Number(serverDatabase.month) - 1);
             }
-            if ( serverDatabase.date ) {
-                date.setDate( serverDatabase.date );
+            if(serverDatabase.date) {
+                date.setDate(serverDatabase.date);
             }
-            resolve( String( date ) );
-        } );
+            resolve(String(date));
+        });
     },
 
-    echo( args ) {
-        return new Promise( ( resolve ) => {
-            resolve( args.join( " " ) );
-        } );
+    echo(args) {
+        return new Promise((resolve) => {
+            resolve(args.join(" "));
+        });
     },
 
-    help( args ) {
-        return new Promise( ( resolve ) => {
+    help(args) {
+        return new Promise((resolve) => {
             const programs = allowedSoftwares();
-            if ( args.length === 0 ) {
-                const commands = Object.keys( system ).filter( ( cmd ) => cmd !== "dumpdb" );
-                Array.prototype.push.apply( commands, Object.keys( programs ).filter( ( pName ) => !programs[ pName ].secretCommand ) );
+            if(args.length === 0) {
+                const commands = Object.keys(system).filter((cmd) => cmd !== "dumpdb");
+                Array.prototype.push.apply(commands, Object.keys(programs).filter((pName) => !programs[pName].secretCommand));
                 commands.sort();
-                resolve( [
+                resolve([
                     "You can read the help of a specific command by entering as follows: 'help commandName'",
                     "List of useful commands:",
-                    `<div class="ls-files">${ commands.join( "<br>" ) }</div>`,
+                    `<div class="ls-files">${commands.join("<br>")}</div>`,
                     "You can navigate in the commands usage history using the UP & DOWN arrow keys.",
                     "The TAB key will provide command auto-completion."
-                ] );
-            } else if ( args[ 0 ] === "clear" ) {
-                resolve( [ "Usage:", "> clear", "The clear command will completely wipeout the entire screen, but it will not affect the history." ] );
-            } else if ( args[ 0 ] === "date" ) {
-                resolve( [ "Usage:", "> date", "The date command will print the current date-time into terminal." ] );
-            } else if ( args[ 0 ] === "echo" ) {
-                resolve( [ "Usage:", "> echo args", "The echo command will print args into terminal." ] );
-            } else if ( args[ 0 ] === "help" ) {
-                resolve( [ "Usage:", "> help", "The default help message. It will show some of the available commands in a server." ] );
-            } else if ( args[ 0 ] === "login" ) {
-                resolve( [ "Usage:", "> login username:password", "Switch account: log in as another registered user on the server, to access your data files and messages." ] );
-            } else if ( args[ 0 ] === "mail" ) {
-                resolve( [ "Usage:", "> mail", "If you're logged in you can list your mail messages if any." ] );
-            } else if ( args[ 0 ] === "ping" ) {
-                resolve( [
+                ]);
+            }
+            else if(args[0] === "clear") {
+                resolve(["Usage:", "> clear", "The clear command will completely wipeout the entire screen, but it will not affect the history."]);
+            }
+            else if(args[0] === "date") {
+                resolve(["Usage:", "> date", "The date command will print the current date-time into terminal."]);
+            }
+            else if(args[0] === "echo") {
+                resolve(["Usage:", "> echo args", "The echo command will print args into terminal."]);
+            }
+            else if(args[0] === "help") {
+                resolve(["Usage:", "> help", "The default help message. It will show some of the available commands in a server."]);
+            }
+            else if(args[0] === "login") {
+                resolve(["Usage:", "> login username:password", "Switch account: log in as another registered user on the server, to access your data files and messages."]);
+            }
+            else if(args[0] === "mail") {
+                resolve(["Usage:", "> mail", "If you're logged in you can list your mail messages if any."]);
+            }
+            else if(args[0] === "ping") {
+                resolve([
                     "Usage:",
                     "> ping address",
                     "The ping command will try to reach a valid address.",
                     "If the ping doesn't return a valid response, the address may be incorrect, may not exist or can't be reached locally."
-                ] );
-            } else if ( args[ 0 ] === "read" ) {
-                resolve( [ "Usage:", "> read source x", "Read your sources. Some may require you to be logged in." ] );
-            } else if ( args[ 0 ] === "ssh" ) {
-                resolve( [
+                ]);
+            }
+            else if(args[0] === "read") {
+                resolve(["Usage:", "> read source x", "Read your sources. Some may require you to be logged in."]);
+            }
+            else if(args[0] === "ssh") {
+                resolve([
                     "Usage:",
                     "> ssh address",
                     "> ssh username@address",
@@ -387,218 +406,228 @@ system = {
                     "You can connect to a valid address to access a specific server on the Internet.",
                     "You may need to specify a username if the server has no default user.",
                     "You may need to specify a password if the user account is protected."
-                ] );
-            } else if ( args[ 0 ] === "whoami" ) {
-                resolve( [ "Usage:", "> whoami", "Display the server you are currently connected to, and the login you are registered with." ] );
-            } else if ( args[ 0 ] in softwareInfo ) {
-                const customProgram = programs[ args[ 0 ] ];
-                if ( customProgram.help ) {
-                    resolve( [ "Usage:", `> ${ args[ 0 ] }`, customProgram.help ] );
-                }
-            } else if ( args[ 0 ] in system && args[ 0 ] !== "dumpdb" ) {
-                console.error( `Missing help message for system command: ${ args[ 0 ] }` );
-            } else {
-                resolve( [ `Unknown command ${ args[ 0 ] }` ] );
+                ]);
             }
-        } );
+            else if(args[0] === "whoami") {
+                resolve(["Usage:", "> whoami", "Display the server you are currently connected to, and the login you are registered with."]);
+            }
+            else if(args[0] in softwareInfo) {
+                const customProgram = programs[args[0]];
+                if(customProgram.help) {
+                    resolve(["Usage:", `> ${args[0]}`, customProgram.help]);
+                }
+            }
+            else if(args[0] in system && args[0] !== "dumpdb") {
+                console.error(`Missing help message for system command: ${args[0]}`);
+            }
+            else {
+                resolve([`Unknown command ${args[0]}`]);
+            }
+        });
     },
 
-    login( args ) {
-        return new Promise( ( resolve, reject ) => {
-            if ( !args ) {
-                reject( new UsernameIsEmptyError() );
+    login(args) {
+        return new Promise((resolve, reject) => {
+            if(!args) {
+                reject(new UsernameIsEmptyError());
                 return;
             }
             let userName = "";
             let passwd = "";
             try {
-                [ userName, passwd ] = userPasswordFrom( args[ 0 ] );
-            } catch ( error ) {
-                reject( error );
+                [userName, passwd] = userPasswordFrom(args[0]);
+            }
+            catch(error) {
+                reject(error);
                 return;
             }
-            if ( !userName ) {
-                reject( new UsernameIsEmptyError() );
+            if(!userName) {
+                reject(new UsernameIsEmptyError());
                 return;
             }
-            const matchingUser = userList.find( ( user ) => user.userId === userName );
-            if ( !matchingUser ) {
-                reject( new UnknownUserError() );
+            const matchingUser = userList.find((user) => user.userId === userName);
+            if(!matchingUser) {
+                reject(new UnknownUserError());
                 return;
             }
-            if ( matchingUser.password && matchingUser.password !== passwd ) {
-                reject( new InvalidPasswordError( userName ) );
+            if(matchingUser.password && matchingUser.password !== passwd) {
+                reject(new InvalidPasswordError(userName));
                 return;
             }
             userDatabase = matchingUser;
-            setHeader( "Login successful" );
+            setHeader("Login successful");
             resolve();
-        } );
+        });
     },
 
     logout() {
-        return new Promise( () => {
+        return new Promise(() => {
             location.reload();
-        } );
+        });
     },
 
     mail() {
-        return new Promise( ( resolve, reject ) => {
+        return new Promise((resolve, reject) => {
             const messageList = [];
-            if ( userDatabase.userId in maildict ) {
-                $.each( maildict[ userDatabase.userId ], ( index, mail ) => {
-                    if ( mail.to.includes( userDatabase.userId ) ) {
-                        messageList.push( `[${ index }] ${ mail.title }` );
+            if(userDatabase.userId in maildict) {
+                $.each(maildict[userDatabase.userId], (index, mail) => {
+                    if(mail.to.includes(userDatabase.userId)) {
+                        messageList.push(`[${index}] ${mail.title}`);
                     }
-                } );
+                });
             }
 
-            if ( messageList.length === 0 ) {
-                reject( new ServerIsEmptyError( "Mail" ) );
+            if(messageList.length === 0) {
+                reject(new ServerIsEmptyError("Mail"));
                 return;
             }
 
-            resolve( messageList );
-        } );
+            resolve(messageList);
+        });
     },
 
-    read( args ) {
-        return new Promise( ( resolve, reject ) => {
-            const source = args[ 0 ];
-            const target = Number( args[ 1 ] );
+    read(args) {
+        return new Promise((resolve, reject) => {
+            const source = args[0];
+            const target = Number(args[1]);
 
             const message = [];
 
             let readOption = false;
-            if ( source === "mail" ) {
-                $.each( maildict[ userDatabase.userId ], ( index, mail ) => {
-                    if ( mail.to.includes( userDatabase.userId ) && target === index ) {
+            if(source === "mail") {
+                $.each(maildict[userDatabase.userId], (index, mail) => {
+                    if(mail.to.includes(userDatabase.userId) && target === index) {
                         readOption = true;
-                        message.push( "---------------------------------------------" );
-                        message.push( `From: ${ mail.from }` );
-                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                        message.push( "---------------------------------------------" );
+                        message.push("---------------------------------------------");
+                        message.push(`From: ${mail.from}`);
+                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                        message.push("---------------------------------------------");
 
-                        $.each( mail.body.split( "  " ), ( _, line ) => {
-                            message.push( line );
-                        } );
+                        $.each(mail.body.split("  "), (_, line) => {
+                            message.push(line);
+                        });
                     }
-                } );
-            } else if ( source === "contacts" ) {
-                $.each( contactdict[ userDatabase.userId ], ( index, contact ) => {
-                    if ( contact.access.includes( userDatabase.userId ) && target === index ) {
+                });
+            }
+            else if(source === "contacts") {
+                $.each(contactdict[userDatabase.userId], (index, contact) => {
+                    if(contact.access.includes(userDatabase.userId) && target === index) {
                         readOption = true;
-                        message.push( "---------------------------------------------" );
-                        message.push( `${ contact.title }` );
-                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                        message.push( "---------------------------------------------" );
+                        message.push("---------------------------------------------");
+                        message.push(`${contact.title}`);
+                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                        message.push("---------------------------------------------");
 
-                        $.each( contact.body.split( "  " ), ( _, line ) => {
-                            message.push( line );
-                        } );
+                        $.each(contact.body.split("  "), (_, line) => {
+                            message.push(line);
+                        });
                     }
-                } );
-            } else if ( source === "other" ) {
-                $.each( otherslist, ( index, other ) => {
-                    if ( target === index ) {
+                });
+            }
+            else if(source === "other") {
+                $.each(otherslist, (index, other) => {
+                    if(target === index) {
                         readOption = true;
-                        message.push( "---------------------------------------------" );
-                        message.push( `${ other.title }` );
-                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                        message.push( "---------------------------------------------" );
+                        message.push("---------------------------------------------");
+                        message.push(`${other.title}`);
+                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                        message.push("---------------------------------------------");
 
-                        $.each( other.body.split( "  " ), ( _, line ) => {
-                            message.push( line );
-                        } );
+                        $.each(other.body.split("  "), (_, line) => {
+                            message.push(line);
+                        });
                     }
-                } );
-            } else if ( source === "factions" ) {
-                $.each( factionslist, ( index, faction ) => {
-                    if ( target === index ) {
+                });
+            }
+            else if(source === "factions") {
+                $.each(factionslist, (index, faction) => {
+                    if(target === index) {
                         readOption = true;
-                        message.push( "---------------------------------------------" );
-                        message.push( `${ faction.title }` );
-                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                        message.push( "---------------------------------------------" );
+                        message.push("---------------------------------------------");
+                        message.push(`${faction.title}`);
+                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                        message.push("---------------------------------------------");
 
-                        $.each( faction.body.split( "  " ), ( _, line ) => {
-                            message.push( line );
-                        } );
+                        $.each(faction.body.split("  "), (_, line) => {
+                            message.push(line);
+                        });
                     }
-                } );
-            } else if ( source === "places" ) {
-                $.each( placelist, ( index, place ) => {
-                    if ( target === index ) {
+                });
+            }
+            else if(source === "places") {
+                $.each(placelist, (index, place) => {
+                    if(target === index) {
                         readOption = true;
-                        message.push( "---------------------------------------------" );
-                        message.push( `${ place.title }` );
-                        message.push( `To: ${ userDatabase.userId }@${ serverDatabase.terminalID }` );
-                        message.push( "---------------------------------------------" );
+                        message.push("---------------------------------------------");
+                        message.push(`${place.title}`);
+                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                        message.push("---------------------------------------------");
 
-                        $.each( place.body.split( "  " ), ( _, line ) => {
-                            message.push( line );
-                        } );
+                        $.each(place.body.split("  "), (_, line) => {
+                            message.push(line);
+                        });
                     }
-                } );
+                });
             }
 
-            if ( !readOption ) {
-                reject( new InvalidMessageKeyError() );
+            if(!readOption) {
+                reject(new InvalidMessageKeyError());
                 return;
             }
 
-            resolve( message );
-        } );
+            resolve(message);
+        });
     },
 
-    ping( args ) {
-        return new Promise( ( resolve, reject ) => {
-            if ( args === "" ) {
-                reject( new AddressIsEmptyError() );
+    ping(args) {
+        return new Promise((resolve, reject) => {
+            if(args === "") {
+                reject(new AddressIsEmptyError());
                 return;
             }
 
-            $.get( `config/network/${ args }/manifest.json`, ( serverInfo ) => {
-                resolve( `Server ${ serverInfo.serverAddress } (${ serverInfo.serverName }) can be reached` );
-            } )
-                .fail( () => reject( new AddressNotFoundError( args ) ) );
-        } );
+            $.get(`config/network/${args}/manifest.json`, (serverInfo) => {
+                resolve(`Server ${serverInfo.serverAddress} (${serverInfo.serverName}) can be reached`);
+            })
+            .fail(() => reject(new AddressNotFoundError(args)));
+        });
     },
 
-    ssh( args ) {
-        return new Promise( ( resolve, reject ) => {
-            if ( args === "" ) {
-                reject( new AddressIsEmptyError() );
+    ssh(args) {
+        return new Promise((resolve, reject) => {
+            if(args === "") {
+                reject(new AddressIsEmptyError());
                 return;
             }
             let userName = "";
             let passwd = "";
-            let serverAddress = args[ 0 ];
-            if ( serverAddress.includes( "@" ) ) {
-                const splitted = serverAddress.split( "@" );
-                if ( splitted.length !== 2 ) {
-                    reject( new InvalidCommandParameter( "ssh" ) );
+            let serverAddress = args[0];
+            if(serverAddress.includes("@")) {
+                const splitted = serverAddress.split("@");
+                if(splitted.length !== 2) {
+                    reject(new InvalidCommandParameter("ssh"));
                     return;
                 }
-                serverAddress = splitted[ 1 ];
+                serverAddress = splitted[1];
                 try {
-                    [ userName, passwd ] = userPasswordFrom( splitted[ 0 ] );
-                } catch ( error ) {
-                    reject( error );
+                    [userName, passwd] = userPasswordFrom(splitted[0]);
+                }
+                catch(error) {
+                    reject(error);
                     return;
                 }
             }
-            kernel.connectToServer( serverAddress, userName, passwd ).then( resolve ).catch( reject );
-        } );
+            kernel.connectToServer(serverAddress, userName, passwd).then(resolve).catch(reject);
+        });
     }
 };
 
-function userPasswordFrom( creds ) {
-    if ( !creds.includes( ":" ) ) {
-        return [ creds, "" ];
+function userPasswordFrom(creds) {
+    if(!creds.includes(":")) {
+        return [creds, ""];
     }
-    const splitted = creds.split( ":" );
-    if ( splitted.length !== 2 ) {
+    const splitted = creds.split(":");
+    if(splitted.length !== 2) {
         throw new InvalidCredsSyntaxError();
     }
     return splitted;
@@ -612,19 +641,21 @@ function userPasswordFrom( creds ) {
  * @param {String} progName The software name
  * @param {String} args Args to be handled if any
  */
-function software( progName, args ) {
-    return new Promise( ( resolve, reject ) => {
-        const program = allowedSoftwares()[ progName ];
-        if ( program ) {
-            if ( program.clear ) {
-                system.clear().then( runSoftware( progName, program, args ).then( resolve, reject ) );
-            } else {
-                runSoftware( progName, program, args ).then( resolve, reject );
+function software(progName, args) {
+    return new Promise((resolve, reject) => {
+        const program = allowedSoftwares()[progName];
+        if(program) {
+            if(program.clear) {
+                system.clear().then(runSoftware(progName, program, args).then(resolve, reject));
             }
-        } else {
-            reject( new CommandNotFoundError( progName ) );
+            else {
+                runSoftware(progName, program, args).then(resolve, reject);
+            }
         }
-    } );
+        else {
+            reject(new CommandNotFoundError(progName));
+        }
+    });
 }
 
 /**
@@ -634,27 +665,28 @@ function software( progName, args ) {
  * @param {Object} program Command definition from sofwtare.json
  * @param {String} args Args to be handled if any
  */
-function runSoftware( progName, program, args ) {
-    return new Promise( ( resolve ) => {
+function runSoftware(progName, program, args) {
+    return new Promise((resolve) => {
         let msg;
-        if ( program.message ) {
-            msg = { text: program.message, delayed: program.delayed };
-        } else {
-            msg = window[ progName ]( args );
-            if ( msg.constructor === Object ) {
-                if ( !msg.onInput ) {
-                    throw new Error( "An onInput callback must be defined!" );
+        if(program.message) {
+            msg = {text: program.message, delayed: program.delayed};
+        }
+        else {
+            msg = window[progName](args);
+            if(msg.constructor === Object) {
+                if(!msg.onInput) {
+                    throw new Error("An onInput callback must be defined!");
                 }
-                if ( msg.message ) {
-                    output( msg.message );
+                if(msg.message) {
+                    output(msg.message);
                 }
-                readPrompt( msg.prompt || ">" ).then( ( input ) => msg.onInput( input ) )
-                    .then( ( finalMsg ) => resolve( finalMsg ) );
+                readPrompt(msg.prompt || ">").then((input) => msg.onInput(input))
+                .then((finalMsg) => resolve(finalMsg));
                 return;
             }
         }
-        resolve( msg );
-    } );
+        resolve(msg);
+    });
 }
 
 /**
@@ -662,22 +694,22 @@ function runSoftware( progName, program, args ) {
  *
  * @param {String} promptText The text prefix to display before the <input> prompt
  */
-function readPrompt( promptText ) {
-    return new Promise( ( resolve ) => {
-        const prevPromptText = $( "#input-line .prompt" ).text();
-        $( "#input-line .prompt" ).text( promptText );
+function readPrompt(promptText) {
+    return new Promise((resolve) => {
+        const prevPromptText = $("#input-line .prompt").text();
+        $("#input-line .prompt").text(promptText);
         term.removeCmdLineListeners();
-        cmdLine_.addEventListener( "keydown", promptSubmitted );
+        cmdLine_.addEventListener("keydown", promptSubmitted);
 
-        function promptSubmitted( e ) {
-            if ( e.keyCode === 13 ) {
-                cmdLine_.removeEventListener( "keydown", promptSubmitted );
+        function promptSubmitted(e) {
+            if(e.keyCode === 13) {
+                cmdLine_.removeEventListener("keydown", promptSubmitted);
                 term.addCmdLineListeners();
-                $( "#input-line .prompt" ).text( prevPromptText );
-                resolve( this.value.trim() );
+                $("#input-line .prompt").text(prevPromptText);
+                resolve(this.value.trim());
             }
         }
-    } );
+    });
 }
 
 /**
@@ -685,13 +717,13 @@ function readPrompt( promptText ) {
  */
 function allowedSoftwares() {
     const softwares = {};
-    for ( const app in softwareInfo ) {
-        const program = softwareInfo[ app ];
-        if (
-            ( !program.location || program.location.includes( serverDatabase.serverAddress ) ) &&
-            ( !program.protection || program.protection.includes( userDatabase.userId ) )
+    for(const app in softwareInfo) {
+        const program = softwareInfo[app];
+        if(
+            (!program.location || program.location.includes(serverDatabase.serverAddress)) &&
+            (!program.protection || program.protection.includes(userDatabase.userId))
         ) {
-            softwares[ app ] = program;
+            softwares[app] = program;
         }
     }
     return softwares;
