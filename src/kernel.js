@@ -495,34 +495,38 @@ system = {
 
             let readOption = false;
             if(source === "mail") {
-                $.each(maildict[userDatabase.userId], (index, mail) => {
-                    if(mail.to.includes(userDatabase.userId) && target === index) {
-                        readOption = true;
-                        message.push("---------------------------------------------");
-                        message.push(`From: ${mail.from}`);
-                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
-                        message.push("---------------------------------------------");
+                if(userDatabase.userId in maildict) {
+                    $.each(maildict[userDatabase.userId], (index, mail) => {
+                        if(mail.to.includes(userDatabase.userId) && target === index) {
+                            readOption = true;
+                            message.push("---------------------------------------------");
+                            message.push(`From: ${mail.from}`);
+                            message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                            message.push("---------------------------------------------");
 
-                        $.each(mail.body.split("  "), (_, line) => {
-                            message.push(line);
-                        });
-                    }
-                });
+                            $.each(mail.body.split("  "), (_, line) => {
+                                message.push(line);
+                            });
+                        }
+                    });
+                }
             }
             else if(source === "contacts") {
-                $.each(contactdict[userDatabase.userId], (index, contact) => {
-                    if(contact.access.includes(userDatabase.userId) && target === index) {
-                        readOption = true;
-                        message.push("---------------------------------------------");
-                        message.push(`${contact.title}`);
-                        message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
-                        message.push("---------------------------------------------");
+                if(userDatabase.userId in contactdict) {
+                    $.each(contactdict[userDatabase.userId], (index, contact) => {
+                        if(contact.access.includes(userDatabase.userId) && target === index) {
+                            readOption = true;
+                            message.push("---------------------------------------------");
+                            message.push(`${contact.title}`);
+                            message.push(`To: ${userDatabase.userId}@${serverDatabase.terminalID}`);
+                            message.push("---------------------------------------------");
 
-                        $.each(contact.body.split("  "), (_, line) => {
-                            message.push(line);
-                        });
-                    }
-                });
+                            $.each(contact.body.split("  "), (_, line) => {
+                                message.push(line);
+                            });
+                        }
+                    });
+                }
             }
             else if(source === "other") {
                 $.each(otherslist, (index, other) => {
