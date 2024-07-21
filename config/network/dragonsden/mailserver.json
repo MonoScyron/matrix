@@ -1,44 +1,10 @@
 [
   {
     "to": [
-      "Shimmer",
-      "YoungDevil44",
-      "12",
-      "GreenShell",
-      "PunkedupGirl",
-      "Silver03",
-      "Iloveocean2058"
+      "admin"
     ],
-    "from": "Kilo",
-    "title": "Got another job for ya",
-    "body": "I’ve got a wonderful magical relic that I have to sell, and I know just the group to sell it for me. While it isn’t powerful in itself, it seems like it’s somehow resonant or some shit. Either way, someone wants to buy it, but they don’t want to risk meeting us above ground. Between the resonance field and the wagemages above ground, I want you to figure out a way to get this shit to Water Plant K54.  Reward: 6 ¥"
-  },
-  {
-    "to": [
-      "Shimmer",
-      "YoungDevil44",
-      "12",
-      "GreenShell",
-      "PunkedupGirl",
-      "Silver03",
-      "Iloveocean2058"
-    ],
-    "from": "Mr. Tanaka",
-    "title": "Retrieve Subject 631",
-    "body": "I hear you’re a new generation of runners, trying to reach out. Congratulations on your first mission succeeding. Kilo has been talking you up, and I want to see for myself. I have a specimen my clients would like you to retrieve for me. It’s magical in nature, but of course I hear you’re experts in these things. The subject was last spotted in Yokohama  Reward: 8 ¥, and a working relationship moving forward"
-  },
-  {
-    "to": [
-      "Shimmer",
-      "YoungDevil44",
-      "12",
-      "GreenShell",
-      "PunkedupGirl",
-      "Silver03",
-      "Iloveocean2058"
-    ],
-    "from": "Mr. Tanaka",
-    "title": "Collect Distillation Equipment",
-    "body": "Hello my dear compatriots.  Hearing of your recent actions, I must say I am impressed. As such, I propose what I figure must be a menial task for you all. My employers distillation equipment has been stolen by the local triads, and sadly they’re a little too connected with the leadership, so I need to muddy my own hands instead. If you could go retrieve it for me, I would certainly be able and willing to call upon you in the future.  Reward: 6 ¥"
+    "from": "testing account",
+    "title": "test mail",
+    "body": "testing mail body"
   }
 ]
