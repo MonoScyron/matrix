@@ -1,38 +1,102 @@
 [
   {
-    "title": "Red Dragon Triad",
+    "title": "corp: Wuxing Inc",
+    "body": "Wuxing is not a corporation in Hong Kong. Wuxing is Hong Kong. The money that flows through. The construction, investments, planning, even the qi that flows through Hong Kong. Anything that comes in goes through Wuxing, and anything that flows out goes through Wuxing. They are masters at work, and while known best for their shipping and financial work, have great ties to magic, engineering, industry, arms, and anything else you can think of. They are the city, and have contacts high and low. The Executive Council, the Marine Authority, the Police. They all answer to Wuxing. So do the triads. Wuxing are mysterious, and few knows what truly happens in their sky-tower. But one thing is for sure, that despite the efforts of multiple megacorps, they are still in charge. Indisputably."
+  },
+  {
+    "title": "corp: Kuroyama Geosource",
+    "body": "Shiawase's investment into Hong Kong, the Kuroyama Geosource has been an invaluable return for them. With minor collaboration from HKB, Shiawase have slowly expanded their operations in Hong Kong, much to the chagrin of Wuxing. Their control over the mining of the uranium and minerals needed for nuclear resources, as well as dominance in the mining industry and continual legal battles against Wuxing for expansion, have led to a hot rivalry forming between them, and the reliance of most of the city on their atomics hasn't made it easy for Wuxing. Their expansion has also included the \"Feng Shui Facility\", a large sea-borne wind and water power generation plant, and their masterpiece. An experimental project, it is one that has global consequences would it go well. Reportedly, they are also backed by a lesser dragon, though these claims are unsubstantiated."
+  },
+  {
+    "title": "corp: Horizon Group",
+    "body": "The Horizon Group is one of the most solid contenders in the Hong Kong Race. Their presence came almost overnight, an explosive burst of expansionism. Having spent years building their Guanxi, they quickly pulled multiple major connections, conglomerating almost all major media studios in Hong Kong. Their foothold now unshakable, they are fighting against both Wuxing and Ares, neither happy with their presence here. In addition, their dominance of the BTL market has led to them clashing with several of the triads as well, especially the Ten Thousand Lions. The situation currently is of a cold war, one that may soon turn hot."
+  },
+  {
+    "title": "corp: Tsang Engineering",
+    "body": "Tsang Engineering is a newcomer to the scene, and one that works closely with (or, as it is now rumoured, against) Wuxing. Despite their names, they make efforts in all kinds of businesses. If you were to trust the shadows, you'd hear that these efforts came from their attempt to abuse the magical powers that lie dormant all across Hong Kong. A risky assessment for sure, only furthered by the fact that several of their employees have been found in the Kowloon Walled City. What they were doing there, nobody knows."
+  },
+  {
+    "title": "corp: Aztech Astraulasia",
+    "body": "While other megacorporations have fought their way into Hong Kong, struggling all the while, Aztechnology took a different approach. As each branch of Aztechnology is independent, they have struck gold with a local allyship with Wuxing. While certainly nothing official, this alliance of convenience is a temporary relief for Wuxing, though tensions have heightened and it does not seem to be permanent. Their aggression in the northern reaches is one of such examples, as their dominance over the food industry slowly grows."
+  },
+  {
+    "title": "corp: Hildebrandt-Kleinfort-Bernal",
+    "body": "In Hong Kong, if its not owned by the Big Ten, its owned by HKB. At least, partially. While not the biggest bank globally, something they have actively tried to avoid, HKB has their claws deep in Hong Kong. Every action they take is purposefully obscured, every move made through various shell companies or subsidiaries. Unluckily, they are currently locked in the spotlight. The Great Dragon Celefyr is actively fighting with them for remnants of a fallen megacorp, the predecessor to NeoNet. It certainly does not help that recently accusations of working with the terrorist group 9x9 have been slowly accruing."
+  },
+  {
+    "title": "corp: Saeder Krupp Swiss Bank",
+    "body": "The SKSB is one of the largest economic players in the city, vying for dominance with Wuxing and HKB. It's harsh competition, and SKSB are pulling some dirty tricks, as they see this as their ticket into asia. The risks they take here would put any other mega-corp off, but they seem to be getting away with it so far. This becomes doubly as astounding when you consider Lowfyr is in charge, and just how dangerous these moves might be. Rumours have it that they're connected strongly to technomancy, and that there are more than just humans behind the risks and plans devised."
+  },
+  {
+    "title": "corp: Eastern Tiger Corporation",
+    "body": "The Eastern Tiger Corporation have been slowly winning a war they were not prepared to fight. Owner of the Public Grid in Hong Kong, the ETC are responsible for the lack of NeoNet dominance prominently seen elsewhere. Working closely with Xiao-Renraku, they are fighting tooth and claw to maintain their position in the ever shrinking free space they have to operate. Little does it help that they have cut all bridges they have to stave of NeoNet."
+  },
+  {
+    "title": "corp: Evo Navtech",
+    "body": "Evo have long had connections to Hong Kong even before their reform, and now their naval bases here form an astonishing production line that supplies the entire world. Of course, this is helped by their Aquaology, an Underwater city they have built in order to aid their \"naval research\". Effectively an independent blacksite, this city extends above ground as well, to the ports of the Hong Kong Marine Authority. Having won the contact with Ares, this means that Evo have a solid grasp on the city, and one that will be hard to shake."
+  },
+  {
+    "title": "corp: Xiao-Renraku",
+    "body": "Xiao-Renraku made their way into Hong Kong through acquisition of the data logs of Xiao, a NeoNet subsidiary. Their history in Hong Kong is one of underhandedness, doing everything they can to hold on to their position. Taking any support they can get to remain, their software can be found everywhere. The security contracts they have, furthered by the fear of 9x9, have only strengthened their position. Their arms have made their way to Triads, Corpos, and even the Marine Authority. But who's to say that fear they monger is real?"
+  },
+  {
+    "title": "corp: Daihatsu Inc",
+    "body": "A company mostly noteworthy for it's significance in the slow expansion of Hong Kong. A naval city, Daihatsu have slowly created synthetic ground to expand on. They have had few noteworthy incidents, but rumours say they're currently pressured by the Red Dragon Triad. Mitsuhama Hong Kong."
+  },
+  {
+    "title": "corp: Mitsuhama Hong Kong",
+    "body": "Mitsuhama's presence in Hong Kong is almost invisible, unless you know where to look. A completely independent operation, they are mainly notable for their presence in the bays, their drones responsible for loading and unloading most of the ships. Their robotics are less common, but still present. Their main presence lies in Pentacle, as the company has found a highly welcoming market for magic in Hong Kong. In addition, magical poaching is a common if sad affair, and many reagents manage to find their way into their stores."
+  },
+  {
+    "title": "corp: Ares Asia Holdings",
+    "body": "Ares Asia Holdings doesn't exist. It does in a literal sense, you can go into the headquarters, get a cup of coffee, and meet the security guards who will politely kick you out. But it's not a real presence, and certainly not an attempt to get a foot in like the other megacorps try. No, between their contract with the Hong Kong Marine Authority and their current contract as the Hong Kong Police Force, Ares' actual presence is only there for ostensibilities sake. After all, you can only make \"official\" moves with an official presence."
+  },
+  {
+    "title": "corp: Shibata Construction",
+    "body": "Shibata is a player who everone loves, and who everyone loves to hate. The conglomerate of effectively all construction companies in the city, any moves Shibata made is decided by another megacorp. Access to space? Daihatsu. Planning? Wuxing. Workers? Recruited through Horizon. This means they profit greatly off their connections, and they are known to have great Guanxi. It also means that depending on how the cards play out, they just might be the ones taking hits. This means that, do they ever want to pull out, they often have to do so in secret. It's not unheard of for them to run against themselves."
+  },
+  {
+    "title": "corp: Kowloon Motor Bus Company",
+    "body": "The Kowloon Motor Bus Company is responsible for most public transport in the city. Arranging for busses, subways, and even taxis, they transport several hundred thousand people a day."
+  },
+  {
+    "title": "corp: NeoNet Systems",
+    "body": "NeoNet's presence is a joke, and one that is merely depressing at that. While it is impossible to block a megacorp out of a city entirely, the combined efforts of Xiao-Renraku and ETC have blocked out most of NeoNet's presence, they still maintain a smaller presence."
+  },
+  {
+    "title": "underworld: Red Dragon Triad",
     "body": "Not only relegated to Hong Kong, the Red Dragon Triad are the largest triad in the world. For years they fought over Asia with the Yellow Lotus Triad, and now they have shown themselves the victors of this bloody war. Despite their international reach, or perhaps because of it, their presence in Hong Kong is lesser now than before. Operating out of Kwai Tsing, their bite comes from the vast docks of Hong Kong, along with the classical extortion. While unconfirmed, it is also believed they may have ties to one of the Great Dragons, Lung. While not a certain bet, going against the Red Dragons are a bold move no matter how you make it, and few dare risk the wrath of a proper dragon. Still, their sights are currently set elsewhere, and they seem to be focusing on a wholly different place for now: Japan."
   },
   {
-    "title": "Black Chrysanthemum",
+    "title": "underworld: Black Chrysanthemum",
     "body": "While the lotuses and dragons fought, the Chrysanthemums grew, nourished by the rivers of blood shed in their war. Refugees from both the warring gangs and the mainland after the collapse of China, the Chrysanthemums chose to profit off the war. Organs, cyberware, human trafficking, slavery. Any trade labeled as dirty has at least one outfit dedicated to it, and they seem to have no plans of stopping their vicious spree. Even worse, they name their home the Kowloon Walled City, a accursed and lawless claim they are the only ones who would willingly lay claim to."
   },
   {
-    "title": "Ten Thousand Lions",
+    "title": "underworld: Ten Thousand Lions",
     "body": "The Ten Thousand Lions are the remnants of the Yellow Lotus, reformed in the shadows only to reappear in full strength. Patching together the new Triad from remnants of the Yellow Lotus, and sewing in metahumans to make up for any holes, they yet again appear to make a name for themselves. Indeed, they have consciously chosen to base themselves out of minority districts and recruit there, with a strong presence in Kwun Tong. That is not their only advantage, as they are also know to pull on the old connections to Wuxing, and while Wuxing themselves have stated there is no relation, the magical artifacts, research, and gear possessed by the lions could most certainly not have been gotten alone."
   },
   {
-    "title": "289s",
+    "title": "underworld: 289s",
     "body": "Operating out of the Yau Tsim Mong district, the 289s are better known as the Easy Money Gang by some. More a group of gangs than one unified syndicate, these gangs thrive on money that's made with the least risk. Piracy, Scams, Identity Theft, Gambling, Counterfeiting. Boasts are common, but you don't get high up in the 289s without backing them up. While the gangs as a whole tend to lean towards the technical, a couple of them are purely magic. If you're on their good side, you can get some cheap trinkets or talismans from them, provided you don't get scammed. On their bad side, you'd do best to remember the second rule of shadowrunning: Geek the Mage."
   },
   {
-    "title": "Smoke Circle Society",
+    "title": "underworld: Smoke Circle Society",
     "body": "The Smoke Circle Society specialize in drugs, drugs, and drugs. Operating on the southern coast, they profiteer off the shipping district to smuggle all kinds of goods, but mostly drugs, magic or otherwise. Of course, no triad acts with only one crime in mind, and the Smoke Circle are famous for their indulgence in prostitution and trafficking. Worse, they intentionally get people hooked to serve as \"free\" labour, both for physical labour and sexual. Reviled by the underground mileu, they still thrive. Even the most depraved of markets have willing customers."
   },
   {
-    "title": "Kim Dragons",
+    "title": "underworld: Kim Dragons",
     "body": "The Kim Dragons are the dregs of korean immigration, surviving off of violent crime and brutality. Situated in between Tsim Mong and Kwai Tsing, they thrive on kidnappings and home invasions. A ragtag bunch, they only show any sign of order when their leader is around: Effectively never."
   },
   {
-    "title": "Tolo Vory",
+    "title": "underworld: Tolo Vory",
     "body": "While the Triads have made attempts to keep the Yakuza and Mafia out in specifics, the Tolo Vory managed to avoid this by retracting into the Northern Reaches. This is now only helped by their connections to both Evo and the Marine, and the pornography and prostitution they deliver is gladly welcomed by the soldiers who have spent long months at sea. Of course, any attempt to expand gets taken care of, but that certainly doesnt mean they stop trying."
   },
   {
-    "title": "Saito Clan",
+    "title": "underworld: Saito Clan",
     "body": "The Saito Clan hide on Lantau Island, arriving with the Japanese Executives that make their way to Hong Kong. While they haven't yet gotten a proper foundation in Hong Kong, attempts are covertly being made. None have yet to be effective."
   },
   {
-    "title": "Lorinni Family",
+    "title": "underworld: Lorinni Family",
     "body": "The Italian Mafia fit ill in the streets of Hong Kong, and have made themselves scarce. Attempting to get in on gambling and smuggling, only a few outfits can be found in the city, and nobody wants them there."
   }
 ]

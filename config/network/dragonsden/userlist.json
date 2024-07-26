@@ -1,7 +1,22 @@
 [
-    {
-        "userId": "admin",
-        "password": "insertbadjoke",
-        "userName": "admin"
-    }
+  {
+    "userId": "admin",
+    "userName": "admin",
+    "password": "admin"
+  },
+  {
+    "userId": "eternalblue",
+    "userName": "eternalblue",
+    "password": "X2kGY@dLVf1Z#M2l^SYuzT#slObSPS1nmTSOQb@fcOF&IBewstq2LMbT%xwa3A6BMlnZYWH1usIHq$Ev5%Oc8JKwdweaH&pV*Pjy3n&&XfP7OGVVgNIfRK$xiGrjc$%I"
+  },
+  {
+    "userId": "WaffleTree",
+    "userName": "WaffleTree",
+    "password": "Cai55555"
+  },
+  {
+    "userId": "ArcticFox",
+    "userName": "ArcticFox",
+    "password": "WePaveTheRoad"
+  }
 ]
