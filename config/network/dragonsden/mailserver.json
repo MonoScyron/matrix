@@ -1,30 +1,23 @@
 [
   {
     "to": [
-      "admin"
-    ],
-    "from": "eternalblue",
-    "title": "stop snooping",
-    "body": "respect privacy please ty"
-  },
-  {
-    "to": [
       "WaffleTree",
       "ArcticFox",
       "PantofolaBianca",
-      "Yánshí"
+      "Yánshí",
+      "cutthroatdown_under"
     ],
     "from": "eternalblue",
-    "title": "server setup for comms",
-    "body": "tldr: use new terminal created for comms  have set up terminal for comms and outside mail  prev: use eternalblue to communicate w team + clients  now: use terminal to communicate w team + clients  have ported several blogs/websites/wikis for city info  use help in terminal for questions  do not bother me with comms anymore or face severe consequences  ty"
+    "title": "sylvester mission",
+    "body": "got this message, fwding to all  ---  My dear friends. This is Sylvester speaking. The tactical network has been set up and is functional, thanks to your hacker. More importantly, I have a run. Meet me behind the SingYourHeart at Hollywood Road."
   },
   {
     "to": [
-      "ArcticFox"
+      "WaffleTree"
     ],
     "from": "eternalblue",
-    "title": "payment for deck",
-    "body": "ty for deck, was helpful  will help your next run as payment  will not accept refusal"
+    "title": "re: expertise not needed",
+    "body": "as per last mail, offering advice on trees is not correct use case  further comms on this topic will have consequences, final warning  ty for understanding"
   },
   {
     "to": [
@@ -44,10 +37,30 @@
   },
   {
     "to": [
-      "WaffleTree"
+      "ArcticFox"
     ],
     "from": "eternalblue",
-    "title": "re: expertise not needed",
-    "body": "as per last mail, offering advice on trees is not correct use case  further comms on this topic will have consequences, final warning  ty for understanding"
+    "title": "payment for deck",
+    "body": "ty for deck, was helpful  will help your next run as payment  will not accept refusal"
+  },
+  {
+    "to": [
+      "WaffleTree",
+      "ArcticFox",
+      "PantofolaBianca",
+      "Yánshí",
+      "cutthroatdown_under"
+    ],
+    "from": "eternalblue",
+    "title": "server setup for comms",
+    "body": "tldr: use new terminal created for comms  have set up terminal for comms and outside mail  prev: use eternalblue to communicate w team + clients  now: use terminal to communicate w team + clients  have ported several blogs/websites/wikis for city info  use help in terminal for questions  do not bother me with comms anymore or face severe consequences  ty"
+  },
+  {
+    "to": [
+      "admin"
+    ],
+    "from": "eternalblue",
+    "title": "stop snooping",
+    "body": "respect privacy please ty"
   }
 ]
