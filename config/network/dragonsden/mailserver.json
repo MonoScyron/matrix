@@ -1,6 +1,30 @@
 [
   {
     "to": [
+      "cutthroatdown_under"
+    ],
+    "from": "WaffleTree",
+    "title": "Drop the bounty!",
+    "body": "Hey bro hey man hey bud can u drop the bounty on me plz? ngl it dont feel gud knowing u out for my head ill give u my cut of the pay for the next run if u agree to stop hunting me k?"
+  },
+  {
+    "to": [
+      "Yánshí"
+    ],
+    "from": "WaffleTree",
+    "title": "Message to the boss",
+    "body": "Heyyyy friend can u send a message to the boss in person for me rq? i just gotta tell them that the store was out of their fav cigs... cant tell them rn cuz im out doing... stuff tell them that ill return the money they lent me for the cigs when i get back i gotta do something real quick"
+  },
+  {
+    "to": [
+      "PantofolaBianca"
+    ],
+    "from": "WaffleTree",
+    "title": "marksman's \"behaviour\"",
+    "body": "Hey boss can u tell mr marksman to chill out with those bullets? ive cleaned up 12 bullet casings already and ive cleaned 13 bodies and i swear i didnt let any casing go! he keeps on shooting and tooting, way more than he needs to"
+  },
+  {
+    "to": [
       "WaffleTree",
       "ArcticFox",
       "PantofolaBianca",
