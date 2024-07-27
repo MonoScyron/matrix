@@ -10,7 +10,9 @@
   {
     "to": [
       "WaffleTree",
-      "ArcticFox"
+      "ArcticFox",
+      "PantofolaBianca",
+      "Yánshí"
     ],
     "from": "eternalblue",
     "title": "server setup for comms",
